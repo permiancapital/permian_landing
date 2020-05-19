@@ -16,11 +16,10 @@ export default function Menu() {
     <div style={{ position: 'relative', display: 'inline-block' }}>
       {open && (
         <List horizontalAlign="left" verticalAlign="bottom" open={open} onClick={handleClose}>
+          <ListItem> Home</ListItem>
           <ListItem>🏛 About</ListItem>
           <ListItem>📁 Latest Posts</ListItem>
           <ListItem>🐳 EzeDex</ListItem>
-          <Divider />
-          <ListItem disabled>🔙 Logout</ListItem>
         </List>
       )}
       <Button onClick={handleClick} active={open} style={{ fontWeight: 'bold' }}>
