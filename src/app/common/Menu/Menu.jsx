@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
-import { List, ListItem, Button } from 'react95';
+import { List, ListItem, Button, Divider } from 'react95';
 import styled from 'styled-components';
 import pTiger from '../../../img/permian_tiger_v2.png';
+
+const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+`;
 
 const StyledImg = styled.img`
   height: 26px;
   width: 26px;
+`;
+
+const Btc = styled.span`
+  color: #f79419;
+`;
+
+const StartBtn = styled(Button)`
+  font-weight: bold;
+  margin-right: 4px;
 `;
 
 export default function Menu() {
@@ -20,7 +34,7 @@ export default function Menu() {
   }
 
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }}>
+    <Wrapper>
       {open && (
         <List horizontalAlign="left" verticalAlign="bottom" open={open} onClick={handleClose}>
           <ListItem>
@@ -46,9 +60,11 @@ export default function Menu() {
           </ListItem>
         </List>
       )}
-      <Button onClick={handleClick} active={open} style={{ fontWeight: 'bold' }}>
+      <StartBtn onClick={handleClick} active={open} size="md">
         <StyledImg src={pTiger} /> &nbsp;Start
-      </Button>
-    </div>
+      </StartBtn>
+      <Divider vertical size="md" />
+      <Btc>₿</Btc>
+    </Wrapper>
   );
 }

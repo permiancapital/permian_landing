@@ -3,6 +3,10 @@ import { AppBar, TextField, Toolbar } from 'react95';
 import styled from 'styled-components';
 import Menu from '../Menu';
 
+const StyledAppBar = styled(AppBar)`
+  position: relative;
+`;
+
 const RightBar = styled.div`
   display: flex;
 `;
@@ -24,7 +28,7 @@ const Btc = styled.span`
 
 export default function PermianAppBar() {
   return (
-    <AppBar>
+    <StyledAppBar fixed={false}>
       <Toolbar style={{ justifyContent: 'space-between' }}>
         <Menu />
         <RightBar>
@@ -36,6 +40,6 @@ export default function PermianAppBar() {
           <TextField placeholder="Search..." width={150} style={{ marginLeft: 4, position: 'relative' }} />
         </RightBar>
       </Toolbar>
-    </AppBar>
+    </StyledAppBar>
   );
 }
