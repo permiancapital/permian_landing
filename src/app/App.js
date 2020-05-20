@@ -1,15 +1,20 @@
-import React from "react";
-import { Router, Link } from "@reach/router";
-import logo from "./logo.svg";
-import Home from "./Home";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AppBar from './common/AppBar';
+import Home from './Home';
 let Dash = () => <div>Dash</div>;
 
 function App() {
   return (
-    <Router>
-      <Home path="/" />
-      <Dash path="dashboard" />
-    </Router>
+    <div>
+      <AppBar />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="dashboard" element={<Dash />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
