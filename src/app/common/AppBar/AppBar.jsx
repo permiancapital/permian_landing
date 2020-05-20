@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, TextField, Divider, Toolbar, TextArea } from 'react95';
+import { AppBar, TextField, Toolbar } from 'react95';
 import styled from 'styled-components';
 import Menu from '../Menu';
 

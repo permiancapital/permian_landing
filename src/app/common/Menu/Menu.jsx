@@ -9,7 +9,7 @@ const StyledImg = styled.img`
 `;
 
 export default function Menu() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   function handleClick() {
     setOpen(!open);
@@ -23,10 +23,27 @@ export default function Menu() {
     <div style={{ position: 'relative', display: 'inline-block' }}>
       {open && (
         <List horizontalAlign="left" verticalAlign="bottom" open={open} onClick={handleClose}>
-          <ListItem>🏡 Home</ListItem>
-          <ListItem>📁 Latest Posts</ListItem>
-          <ListItem>🐳 EzeDex</ListItem>
-          <ListItem>🏛 About</ListItem>
+          <ListItem>
+            <span role="img" aria-label="home">
+              🏡
+            </span>{' '}
+            Home
+          </ListItem>
+          <ListItem>
+            <span role="img" aria-label="folder">
+              📁
+            </span>{' '}
+            Latest Posts
+          </ListItem>
+          <ListItem>
+            <span role="img" aria-label="whale"></span>🐳 EzeDex
+          </ListItem>
+          <ListItem>
+            <span role="img" aria-label="bank">
+              🏛
+            </span>{' '}
+            About
+          </ListItem>
         </List>
       )}
       <Button onClick={handleClick} active={open} style={{ fontWeight: 'bold' }}>

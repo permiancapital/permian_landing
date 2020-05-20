@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppBar from '../common/AppBar';
 
 export const Home = () => {
-  return <div>sldkjflsdkjf</div>;
+  return <div>sdfsdfsdfsdfsdf</div>;
 };
