@@ -3,15 +3,23 @@ import { Cutout, Window, WindowContent, WindowHeader, Tabs, Tab, TabBody, Button
 import styled from 'styled-components';
 import AppBar from '../common/AppBar';
 import banner from '../../img/permian_banner.png';
+import mycomp from '../../img/win95_mycomputer.png';
 
 const StyledWindow = styled(Window)`
   margin: 5vh;
+`;
+
+const StyledHeader = styled(WindowHeader)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const Wrapper = styled.div`
   width: 100vw;
   display: flex;
   justify-content: center;
+  position: relative;
 `;
 
 const Banner = styled.img`
@@ -24,6 +32,26 @@ const XButton = styled(Button)`
   margin-top: 1px;
 `;
 
+const MyCompLink = styled.a`
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+  line-height: 1.2;
+  font-weight: 300;
+`;
+
+const MyCompImg = styled.img`
+  width: 60px;
+  height: 60px;
+`;
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
   const handleChange = (value) => {
@@ -32,12 +60,13 @@ export default function Home() {
   return (
     <Wrapper>
       <StyledWindow>
-        <WindowHeader>
-          👗 planB.exe{' '}
+        <StyledHeader>
+          {' '}
+          ₿ planB.exe{' '}
           <XButton size={'sm'} square>
             <span style={{ fontWeight: 'bold', transform: 'translateY(-1px)' }}>x</span>
           </XButton>
-        </WindowHeader>
+        </StyledHeader>
         <WindowContent>
           <Tabs value={activeTab} onChange={handleChange}>
             <Tab value={0}>Intro</Tab>
@@ -53,6 +82,10 @@ export default function Home() {
           )}
         </WindowContent>
       </StyledWindow>
+      <MyCompLink>
+        <MyCompImg src={mycomp} />
+        PlanB
+      </MyCompLink>
     </Wrapper>
   );
 }

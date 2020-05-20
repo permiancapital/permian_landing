@@ -1,3 +1,5 @@
-span {
+body,
+span,
+a {
   font-family: system-ui;
 }
