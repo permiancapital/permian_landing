@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Cutout, Window, WindowContent, WindowHeader, Tabs, Tab, TabBody, Button } from 'react95';
 import styled from 'styled-components';
 import AppBar from '../common/AppBar';
-import banner from '../../img/permian_banner.png';
+import IntroTab from './components/IntroTab';
+import GetInTouch from './components/GetInTouch';
+import OpenSourceIC from './components/OpenSourceIC';
 import mycomp from '../../img/win95_mycomputer.png';
 
 const StyledWindow = styled(Window)`
@@ -20,11 +22,6 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-`;
-
-const Banner = styled.img`
-  width: 400px;
-  background-color: #000;
 `;
 
 const XButton = styled(Button)`
@@ -45,6 +42,7 @@ const MyCompLink = styled.a`
   cursor: pointer;
   line-height: 1.2;
   font-weight: 300;
+  z-index: 1;
 `;
 
 const MyCompImg = styled.img`
@@ -54,37 +52,50 @@ const MyCompImg = styled.img`
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
+  const [isPlanShown, setIsPlanShown] = useState(true);
+  const [linkClicked, setLinkClicked] = useState(false);
   const handleChange = (value) => {
     setActiveTab(value);
   };
+  const handlePlanB = (value) => {
+    setIsPlanShown(!isPlanShown);
+  };
+  const handleLinkClicked = () => {
+    if (!isPlanShown) {
+      if (linkClicked) {
+        setLinkClicked(false);
+        setIsPlanShown(true);
+      } else {
+        setLinkClicked(true);
+      }
+    }
+  };
   return (
     <Wrapper>
-      <StyledWindow>
-        <StyledHeader>
-          {' '}
-          ₿ planB.exe{' '}
-          <XButton size={'sm'} square>
-            <span style={{ fontWeight: 'bold', transform: 'translateY(-1px)' }}>x</span>
-          </XButton>
-        </StyledHeader>
-        <WindowContent>
-          <Tabs value={activeTab} onChange={handleChange}>
-            <Tab value={0}>Intro</Tab>
-            <Tab value={1}>Mission</Tab>
-            <Tab value={2}>Get In Touch</Tab>
-          </Tabs>
-          {activeTab === 0 && (
-            <TabBody>
-              <Cutout shadow>
-                <Banner src={banner} />
-              </Cutout>
-            </TabBody>
-          )}
-        </WindowContent>
-      </StyledWindow>
-      <MyCompLink>
+      {isPlanShown && (
+        <StyledWindow>
+          <StyledHeader>
+            {' '}
+            ₿ planB.exe{' '}
+            <XButton size={'sm'} square onClick={handlePlanB}>
+              <span style={{ fontWeight: 'bold', transform: 'translateY(-1px)' }}>x</span>
+            </XButton>
+          </StyledHeader>
+          <WindowContent>
+            <Tabs value={activeTab} onChange={handleChange}>
+              <Tab value={0}>Intro</Tab>
+              <Tab value={1}>Open Source IC</Tab>
+              <Tab value={2}>Get In Touch</Tab>
+            </Tabs>
+            {activeTab === 0 && <IntroTab />}
+            {activeTab === 1 && <OpenSourceIC />}
+            {activeTab === 2 && <GetInTouch />}
+          </WindowContent>
+        </StyledWindow>
+      )}
+      <MyCompLink onClick={handleLinkClicked}>
         <MyCompImg src={mycomp} />
-        PlanB
+        Permian's PlanB
       </MyCompLink>
     </Wrapper>
   );

@@ -5,9 +5,18 @@ import AppBar from './common/AppBar';
 import Home from './Home';
 let Dash = () => <div>Dash</div>;
 
+const AppWrapper = styled.div`
+  a,
+  div,
+  li,
+  span {
+    font-family: system-ui;
+  }
+`;
+
 function App() {
   return (
-    <div>
+    <AppWrapper>
       <AppBar />
       <Router>
         <Routes>
@@ -15,7 +24,7 @@ function App() {
           <Route path="dashboard" element={<Dash />} />
         </Routes>
       </Router>
-    </div>
+    </AppWrapper>
   );
 }
 
