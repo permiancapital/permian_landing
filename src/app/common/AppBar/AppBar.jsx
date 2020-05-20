@@ -31,14 +31,7 @@ export default function PermianAppBar() {
     <StyledAppBar fixed={false}>
       <Toolbar style={{ justifyContent: 'space-between' }}>
         <Menu />
-        <RightBar>
-          <BtcDiv>
-            <BtcSpan>
-              <Btc>₿</Btc> $9823.23
-            </BtcSpan>
-          </BtcDiv>
-          <TextField placeholder="Search..." width={150} style={{ marginLeft: 4, position: 'relative' }} />
-        </RightBar>
+        <TextField placeholder="Search..." width={150} style={{ marginLeft: 4, position: 'relative' }} />
       </Toolbar>
     </StyledAppBar>
   );

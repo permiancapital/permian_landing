@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { List, ListItem, Button, Divider } from 'react95';
 import styled from 'styled-components';
 import pTiger from '../../../img/permian_tiger_v2.png';
+import btcSml from '../../../img/icons/btc_small.png';
+import ethSml from '../../../img/icons/eth_small.png';
+import linkSml from '../../../img/icons/link_small.png';
+const icons = [{ img: btcSml }, { img: ethSml }, { img: linkSml }];
 
 const Wrapper = styled.div`
   position: relative;
@@ -19,7 +23,13 @@ const Btc = styled.span`
 
 const StartBtn = styled(Button)`
   font-weight: bold;
-  margin-right: 4px;
+  margin-right: 6px;
+`;
+
+const MenuBtn = styled(Button)``;
+const MenuImg = styled.img`
+  width: 24px;
+  height: 24px;
 `;
 
 export default function Menu() {
@@ -64,7 +74,14 @@ export default function Menu() {
         <StyledImg src={pTiger} /> &nbsp;Start
       </StartBtn>
       <Divider vertical size="md" />
-      <Btc>₿</Btc>
+      {icons.map((icon) => {
+        return (
+          <MenuBtn variant="menu">
+            <MenuImg src={icon.img} />
+          </MenuBtn>
+        );
+      })}
+      <Divider vertical size="md" />
     </Wrapper>
   );
 }
