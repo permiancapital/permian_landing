@@ -5,10 +5,12 @@ import AppBar from '../common/AppBar';
 import IntroTab from './components/IntroTab';
 import GetInTouch from './components/GetInTouch';
 import OpenSourceIC from './components/OpenSourceIC';
+import TradingView from './components/TradingView';
 import mycomp from '../../img/win95_mycomputer.png';
 
 const StyledWindow = styled(Window)`
   margin: 5vh;
+  z-index: 2;
 `;
 
 const StyledHeader = styled(WindowHeader)`
@@ -53,6 +55,7 @@ const MyCompImg = styled.img`
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
   const [isPlanShown, setIsPlanShown] = useState(true);
+  const [isTradingShown, setIsTradingShown] = useState(true);
   const [linkClicked, setLinkClicked] = useState(false);
   const handleChange = (value) => {
     setActiveTab(value);
@@ -69,6 +72,9 @@ export default function Home() {
         setLinkClicked(true);
       }
     }
+  };
+  const handleTradingView = () => {
+    setIsTradingShown(!isTradingShown);
   };
   return (
     <Wrapper>
@@ -93,6 +99,7 @@ export default function Home() {
           </WindowContent>
         </StyledWindow>
       )}
+      {isTradingShown && <TradingView handleTradingView={handleTradingView} />}
       <MyCompLink onClick={handleLinkClicked}>
         <MyCompImg src={mycomp} />
         Permian's PlanB

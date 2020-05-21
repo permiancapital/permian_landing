@@ -10,7 +10,7 @@ const icons = [{ img: btcSml }, { img: ethSml }, { img: linkSml }];
 const Wrapper = styled.div`
   position: relative;
   display: flex;
-  z-index: 2;
+  z-index: 3;
 `;
 
 const StyledImg = styled.img`
